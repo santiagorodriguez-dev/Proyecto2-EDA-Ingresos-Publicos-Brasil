@@ -1,4 +1,14 @@
 
+"""
+Este módulo proporciona funciones para la transformación y limpieza de datos en un DataFrame de pandas.
+
+Incluye las siguientes funciones:
+- l_cambio_nombre_columnas(df): renombra las columnas del DataFrame según un diccionario de mapeo predefinido.
+- l_limpieza_de_datos(df): realiza varias tareas de limpieza en el DataFrame, como conversión de tipos de datos y eliminación de espacios en blanco.
+- l_rellenado_faltante(df, col1, col2, opcion): rellena los valores faltantes en una columna utilizando los valores de otra columna.
+- l_limpieza_de_datos_final(df): finaliza la limpieza del DataFrame, llenando valores faltantes y ajustando tipos de datos.
+"""
+
 # ini imports
 import pandas as pd # type: ignore
 
@@ -30,21 +40,9 @@ def l_cambio_nombre_columnas(df: pd.DataFrame):
 
     return df
 
-#cambiamos nombre de las columnas
+#limpiamos datos
 def l_limpieza_de_datos(df: pd.DataFrame):
     
-    #CODIGO_ORGANIZACION_SUPERIOR
-    df[df.columns[0]] = df[df.columns[0]].fillna(0)
-    df[df.columns[0]] = df[df.columns[0]].astype(int);
-
-    #CODIGO_DE_ORGANO
-    df[df.columns[2]] = df[df.columns[2]].fillna(0)
-    df[df.columns[2]] = df[df.columns[2]].astype(int);
-
-    #CODIGO_DE_UNIDAD_GESTORA
-    df[df.columns[4]] = df[df.columns[4]].fillna(0)
-    df[df.columns[4]] = df[df.columns[4]].astype(int);
-
     #ANIO_EJERCICIO
     df[df.columns[15]] = df[df.columns[15]].fillna(0)
     df[df.columns[15]] = df[df.columns[15]].astype(int);
@@ -94,6 +92,32 @@ def l_rellenado_faltante(df: pd.DataFrame, col1, col2, opcion):
     diccionario_clave_valor = df_columnas_filtrado_limpio.set_index(col1)[col2].to_dict()
 
     df[col2] = df[col2].fillna(df[col1].map(diccionario_clave_valor))
+
+    return df
+
+#limpiamos datos
+def l_limpieza_de_datos_final(df: pd.DataFrame):
+    
+    #CODIGO_ORGANIZACION_SUPERIOR
+    df[df.columns[0]] = df[df.columns[0]].fillna(0)
+    df[df.columns[0]] = df[df.columns[0]].astype(int);
+
+    #CODIGO_DE_ORGANO
+    df[df.columns[2]] = df[df.columns[2]].fillna(0)
+    df[df.columns[2]] = df[df.columns[2]].astype(int);
+
+    #CODIGO_DE_UNIDAD_GESTORA
+    df[df.columns[4]] = df[df.columns[4]].fillna(0)
+    df[df.columns[4]] = df[df.columns[4]].astype(int);
+
+    #CATEGORIA_ECONOMICA
+    df[df.columns[6]] = df[df.columns[6]].fillna('Sem informação')
+
+    #ORIGEN_INGRESO
+    df[df.columns[7]] = df[df.columns[7]].fillna('Sem informação')
+
+    #eliminamos duplicados
+    df = df.drop_duplicates()
 
     return df
 
