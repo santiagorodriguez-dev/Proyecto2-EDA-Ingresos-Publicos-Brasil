@@ -1,4 +1,3 @@
-""""""
 
 # ini imports
 import pandas as pd # type: ignore
@@ -66,18 +65,35 @@ def l_limpieza_de_datos(df: pd.DataFrame):
     df[df.columns[14]] = df[df.columns[14]].str.strip()
     df[df.columns[14]] = pd.to_datetime(df[df.columns[14]])
 
+    #NOMBRE_DEL_ORGANO
+    df[df.columns[3]] = df[df.columns[3]].str.strip()
+
+    #NOMBRE_DEL_ORGANO
+    df[df.columns[3]] = df[df.columns[3]].str.strip()
+
+    #NOMBRE_ORGANIZACION_SUPERIOR
+    df[df.columns[1]] = df[df.columns[1]].str.strip()
+
+    #NOMBRE_UNIDAD_GESTORA
+    df[df.columns[5]] = df[df.columns[5]].str.strip()
+
     return df
 
-def rellenado_faltante(df: pd.DataFrame):
-    df_columnas = df[['CODIGO_ORGANIZACION_SUPERIOR','NOMBRE_ORGANIZACION_SUPERIOR']]
+# rellenamos los datos que faltan de las columnas
+def l_rellenado_faltante(df: pd.DataFrame, col1, col2, opcion):
 
-    df_columnas_filtrado = df_columnas[df_columnas['CODIGO_ORGANIZACION_SUPERIOR'] != 0]
+    df_columnas = df[[col1,col2]]
+
+    if opcion == True:
+        df_columnas_filtrado = df_columnas[df_columnas[col1] != 0]
+    else:
+        df_columnas_filtrado = df_columnas[df_columnas[col2] != 0]
 
     df_columnas_filtrado_limpio = df_columnas_filtrado.drop_duplicates().dropna()
-    
-    diccionario_clave_valor = df_columnas_filtrado_limpio.set_index('CODIGO_ORGANIZACION_SUPERIOR')['NOMBRE_ORGANIZACION_SUPERIOR'].to_dict()
 
-    df['NOMBRE_ORGANIZACION_SUPERIOR'] = df['NOMBRE_ORGANIZACION_SUPERIOR'].fillna(df['CODIGO_ORGANIZACION_SUPERIOR'].map(diccionario_clave_valor))
+    diccionario_clave_valor = df_columnas_filtrado_limpio.set_index(col1)[col2].to_dict()
+
+    df[col2] = df[col2].fillna(df[col1].map(diccionario_clave_valor))
 
     return df
 
