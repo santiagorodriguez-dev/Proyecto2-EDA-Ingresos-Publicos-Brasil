@@ -56,7 +56,7 @@ def save_to_file(df_all_data_union, nombre):
         if not os.path.exists(path_ficheros_salida):
             os.mkdir(path_ficheros_salida)
 
-        df_all_data_union.to_csv(path_ficheros_salida + nombre)
+        df_all_data_union.to_csv(path_ficheros_salida + nombre, sep = ';')
     except:
         print("Error en la funcion save_to_file")
 
