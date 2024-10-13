@@ -27,7 +27,7 @@ def l_cambio_nombre_columnas(df: pd.DataFrame):
                     df.columns[5]: 'NOMBRE_UNIDAD_GESTORA',
                     df.columns[6]: 'CATEGORIA_ECONOMICA',
                     df.columns[7]: 'ORIGEN_INGRESO',
-                    df.columns[8]: 'TPO_INGRESO',
+                    df.columns[8]: 'TIPO_INGRESO',
                     df.columns[9]: 'DEPARTAMENTO',
                     df.columns[10]: 'VALOR_PREVISTO_ACTUALIZADO',
                     df.columns[11]: 'VALOR_LANZADO',
@@ -68,16 +68,28 @@ def l_limpieza_de_datos(df: pd.DataFrame):
     df[df.columns[14]] = pd.to_datetime(df[df.columns[14]],format="%d/%m/%Y")
 
     #NOMBRE_DEL_ORGANO
-    df[df.columns[3]] = df[df.columns[3]].str.strip()
+    df[df.columns[3]] = df[df.columns[3]].str.strip().str.capitalize()
 
     #NOMBRE_DEL_ORGANO
-    df[df.columns[3]] = df[df.columns[3]].str.strip()
+    df[df.columns[3]] = df[df.columns[3]].str.strip().str.capitalize()
 
     #NOMBRE_ORGANIZACION_SUPERIOR
-    df[df.columns[1]] = df[df.columns[1]].str.strip()
+    df[df.columns[1]] = df[df.columns[1]].str.strip().str.capitalize()
 
     #NOMBRE_UNIDAD_GESTORA
-    df[df.columns[5]] = df[df.columns[5]].str.strip()
+    df[df.columns[5]] = df[df.columns[5]].str.strip().str.capitalize()
+
+    #DEPARTAMENTO
+    df[df.columns[9]] = df[df.columns[9]].str.strip().str.capitalize()
+
+    #TIPO_INGRESO
+    df[df.columns[8]] = df[df.columns[8]].str.strip().str.capitalize()
+
+    #ORIGEN_INGRESO
+    df[df.columns[7]] = df[df.columns[7]].str.strip().str.capitalize()
+
+    #CATEGORIA_ECONOMICA
+    df[df.columns[6]] = df[df.columns[6]].str.strip().str.capitalize()
 
     return df
 
