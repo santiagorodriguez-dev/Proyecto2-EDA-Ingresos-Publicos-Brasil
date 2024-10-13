@@ -90,7 +90,7 @@ def l_limpieza_de_datos(df: pd.DataFrame):
 
     #CATEGORIA_ECONOMICA
     df[df.columns[6]] = df[df.columns[6]].str.strip().str.capitalize()
-
+    
     return df
 
 # rellenamos los datos que faltan de las columnas
@@ -132,6 +132,12 @@ def l_limpieza_de_datos_final(df: pd.DataFrame):
     #ORIGEN_INGRESO
     df[df.columns[7]] = df[df.columns[7]].fillna('Sem informação')
 
+    #TIPO_INGRESO
+    df[df.columns[8]] = df[df.columns[8]].fillna('Sem informação')
+
+    #DEPARTAMENTO
+    df[df.columns[9]] = df[df.columns[9]].fillna('não há departamento')
+    
     #eliminamos duplicados
     df = df.drop_duplicates()
 
