@@ -137,6 +137,14 @@ def l_limpieza_de_datos_final(df: pd.DataFrame):
 
     return df
 
+def l_limpieza_conversion_fecha(df: pd.DataFrame):
+
+    #FECHA_LANZAMIENTO 2013-12-31
+    df[df.columns[14]] = df[df.columns[14]].str.strip()
+    df[df.columns[14]] = pd.to_datetime(df[df.columns[14]],format="%Y-%m-%d")
+
+    return df
+
 
 
 
