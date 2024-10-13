@@ -65,7 +65,7 @@ def l_limpieza_de_datos(df: pd.DataFrame):
 
     #FECHA_LANZAMIENTO
     df[df.columns[14]] = df[df.columns[14]].str.strip()
-    df[df.columns[14]] = pd.to_datetime(df[df.columns[14]])
+    df[df.columns[14]] = pd.to_datetime(df[df.columns[14]],format="%d/%m/%Y")
 
     #NOMBRE_DEL_ORGANO
     df[df.columns[3]] = df[df.columns[3]].str.strip()
