@@ -12,7 +12,7 @@ El gobierno de Brasil, a través de sus distintos órganos, gestiona la recaudac
 
 Has sido contratado por la Secretaría de Hacienda para analizar los datos históricos de la ejecución de ingresos entre 2013 y 2021. La misión es identificar patrones, detectar áreas problemáticas donde la recaudación ha sido consistentemente menor a lo previsto, y proponer recomendaciones basadas en los datos que ayuden a mejorar la precisión de las previsiones y la eficiencia de la recaudación.
 
-Los problemas concretos que te han pedido resolver son:
+Los problemas concretos a resolver son:
 
 1.	**Desviaciones entre lo previsto y lo recaudado**: Determinar en qué categorías económicas o tipos de ingresos las diferencias son más pronunciadas.
 
