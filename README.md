@@ -51,7 +51,7 @@ Los problemas concretos a resolver son:
 * [Numpy](https://numpy.org/doc/stable/) - Numpy
 * [seaborn](https://seaborn.pydata.org/tutorial.html) - Seaborn
 * [matplotlib](https://matplotlib.org/stable/users/index) - matplotlib
-* [pydata](https://pandas.pydata.org/docs/) - pydata
+* [pandas](https://pandas.pydata.org/docs/) - pandas
 * [Visual Studio Code](https://code.visualstudio.com/) - IDE desarrollo
   
 ## Autores ✒️
