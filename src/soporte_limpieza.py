@@ -59,6 +59,10 @@ def l_limpieza_de_datos(df: pd.DataFrame):
     df[df.columns[12]] = df[df.columns[12]].str.replace(',', '.')
     df[df.columns[12]] = df[df.columns[12]].astype(float); 
 
+    #PORCENTAJE_REALIZADO
+    df[df.columns[13]] = df[df.columns[13]].str.replace(',', '.')
+    df[df.columns[13]] = df[df.columns[13]].astype(float); 
+
     #FECHA_LANZAMIENTO
     df[df.columns[14]] = df[df.columns[14]].str.strip()
     df[df.columns[14]] = pd.to_datetime(df[df.columns[14]])
